@@ -9,7 +9,9 @@
             "email": "moaalaa16@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
     "autoload": {
         "psr-4": {
             "MoaAlaa\\SayAJoke\\": "src/"

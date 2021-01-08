@@ -2,23 +2,25 @@
 
 namespace MoaAlaa\SayAJoke;
 
+use GuzzleHttp\Client;
+
 class JokeFactory
 {
-    protected $jokes = [
-        'Predefined funny jokes',
-        'Another funny Joke',
-        'Last funny joke'
-    ];
+    CONST API_ENDPOINT = 'http://api.icndb.com/jokes/random';
 
-    public function __construct(array $jokes = null) 
+    protected $client;
+
+    public function __construct(Client $client = null) 
     {
-        if ($jokes) {
-            $this->jokes = $jokes;
-        }
+        $this->client = $client ?? new Client();
     }
 
     public function getRandomJoke()
     {
-        return $this->jokes[array_rand($this->jokes)];
+        $response = $this->client->get(static::API_ENDPOINT);
+
+        $jokeResponse = json_decode($response->getBody()->getContents(), true);
+
+        return $jokeResponse['value']['joke'];
     }
 }
