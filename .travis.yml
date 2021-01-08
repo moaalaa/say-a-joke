@@ -3,8 +3,13 @@ language: php
 php:
   - 7.3
 
+env:
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest"
+    - COMPOSER_FLAGS=""
+
 before_script:
-  - travis_retry composer update
+  - travis_retry composer update ${COMPOSER_FLAGS}
   # disable xdebug if not coverage
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
 
