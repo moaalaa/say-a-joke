@@ -1,11 +1,11 @@
 language: php
 
 php:
-  - 7.2
   - 7.3
 
 before_script:
   - travis_retry composer update
+  - php -c /usr/local/lib/php-coverage.ini /usr/bin/phpunit -c app/
 
 script:
   - ./vendor/bin/phpunit
