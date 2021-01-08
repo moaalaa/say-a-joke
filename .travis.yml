@@ -5,7 +5,8 @@ php:
 
 before_script:
   - travis_retry composer update
-  - php -c /usr/local/lib/php-coverage.ini /usr/bin/phpunit -c app/
+  # disable xdebug if not coverage
+  - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
 
 script:
   - ./vendor/bin/phpunit
