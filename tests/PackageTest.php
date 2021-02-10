@@ -37,4 +37,18 @@ class PackageTest extends TestCase
         // Get jokes command output it will be empty if we don't stop mocking output like first method used        
         $this->assertSame('test joke', trim(Artisan::output()));
     }
+
+    /** @test */
+    public function it_make_a_route_to_see_a_joke()
+    {
+        // Mocking our facade to return what data we want and not call the api
+        JokesFacade::shouldReceive('getRandomJoke')
+            ->once()
+            ->andReturn('test joke');
+
+        $this->get('/say-a-joke')
+            ->assertViewIs('say-a-joke::preview')
+            ->assertViewHas('joke', 'test joke')
+            ->assertOk();
+    }
 }
