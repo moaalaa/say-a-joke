@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.1.1] - 2021-02-10
+## [1.2.0] - 2021-02-10
 - Adding Laravel Support
 - Adding Say Joke Command
 - Adding Facades, Views and Tests
@@ -20,6 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [1.0.0]: https://github.com/moaalaa/say-a-joke/releases/tag/1.0.0
 [1.1.0]: https://github.com/moaalaa/say-a-joke/releases/tag/1.1.0
-[1.1.1]: https://github.com/moaalaa/say-a-joke/releases/tag/1.1.1
+[1.2.0]: https://github.com/moaalaa/say-a-joke/releases/tag/1.2.0
 
 
