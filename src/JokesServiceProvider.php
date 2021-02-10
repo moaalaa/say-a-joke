@@ -16,12 +16,16 @@ class JokesServiceProvider extends ServiceProvider
         }
         
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'say-a-joke');
-
+        
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('/views/vendor/say-a-joke'),
-        ]);
-
-        Route::get('say-a-joke', SayAJokeController::class);
+        ], 'say-a-joke-views');
+        
+        $this->publishes([
+            __DIR__ . '/../config/say-a-joke.php' => config_path('/say-a-joke.php'),
+        ], 'say-a-joke-config');
+        
+        Route::get(config('say-a-joke.view_url'), SayAJokeController::class);
     }
 
     public function register()
@@ -30,5 +34,7 @@ class JokesServiceProvider extends ServiceProvider
         $this->app->bind('jokes', function () {
             return new JokeFactory();
         });
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/say-a-joke.php', 'say-a-joke');
     }
 }
