@@ -23,6 +23,17 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "7.5"
+        "phpunit/phpunit": "7.5",
+        "orchestra/testbench": "3.8"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MoaAlaa\\SayAJoke\\JokesServiceProvider"
+            ],
+            "aliases": {
+                "Jokes": "MoaAlaa\\SayAJoke\\Facades\\JokesFacade"
+            }
+        }
     }
 }
